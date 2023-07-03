@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="../../Common.props" />
+  
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net7.0</TargetFrameworks>
+    <LangVersion>11.0</LangVersion>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <PackageId>Braunse.Newtype</PackageId>
+    <Nullable>enable</Nullable>
+    <IsPackable>true</IsPackable>
+    <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.6.0" PrivateAssets="all" />
+    <ProjectReference Include="..\Runtime\Braunse.Newtype.Runtime.csproj" PrivateAssets="all" Private="true" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Include="$(OutputPath)\netstandard2.0\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+    <None Include="$(OutputPath)\netstandard2.0\Braunse.Newtype.Runtime.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+    <None Include="$(OutputPath)\netstandard2.0\Braunse.Newtype.Runtime.dll" Pack="true" PackagePath="lib/netstandard2.0" Visible="true" />
+    <None Include="$(OutputPath)\net7.0\Braunse.Newtype.Runtime.dll" Pack="true" PackagePath="lib/net7.0" Visible="true" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <AdditionalFiles Include="AnalyzerReleases.Shipped.md" />
+    <AdditionalFiles Include="AnalyzerReleases.Unshipped.md" />
+  </ItemGroup>
+</Project>

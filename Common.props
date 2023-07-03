@@ -1,0 +1,16 @@
+<Project>
+    <PropertyGroup>
+        <PackageVersion>0.0.1-alpha</PackageVersion>
+        <Authors>SebBraun</Authors>
+        <Copyright>Copyright © 2023 Sebastien Braun</Copyright>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/braunse/Braunse.Newtype</PackageProjectUrl>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageTags>Newtype;Generator;CodeGenerator;Wrapper;WrapperType;StrongTypes</PackageTags>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <None Include="../../LICENSE.txt" Pack="true" PackagePath="" />
+        <None Include="../../README.md" Pack="true" PackagePath="" />
+    </ItemGroup>
+</Project>
