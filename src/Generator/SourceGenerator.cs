@@ -73,7 +73,7 @@ public static class SourceGenerator
             if (candidate.Kind != DeclKind.Record)
             {
                 b.Append(
-                    $"\tpublic override bool Equals(object? other) => other is {candidate.Name} o && Equals(o);\n");
+                    $"\tpublic override bool Equals(object? other) => other is {candidate.Name} o && ((IEquatable<{candidate.Name})this).Equals(o);\n");
             }
 
             b.Append($"\tpublic static bool operator ==({candidate.Name} a, {candidate.Name} b) => a.Equals(b);\n")
@@ -89,13 +89,13 @@ public static class SourceGenerator
         {
             b.Append($"\tint System.IComparable<{candidate.Name}>.CompareTo({candidate.Name} other) => Value.CompareTo(other.Value);\n")
                 .Append(
-                    $"\tpublic static bool operator<({candidate.Name} a, {candidate.Name} b) => a.CompareTo(b) < 0;\n")
+                    $"\tpublic static bool operator<({candidate.Name} a, {candidate.Name} b) => ((IComparable<{candidate.Name}>)a).CompareTo(b) < 0;\n")
                 .Append(
-                    $"\tpublic static bool operator<=({candidate.Name} a, {candidate.Name} b) => a.CompareTo(b) <= 0;\n")
+                    $"\tpublic static bool operator<=({candidate.Name} a, {candidate.Name} b) => ((IComparable<{candidate.Name}>)a).CompareTo(b) <= 0;\n")
                 .Append(
-                    $"\tpublic static bool operator>({candidate.Name} a, {candidate.Name} b) => a.CompareTo(b) > 0;\n")
+                    $"\tpublic static bool operator>({candidate.Name} a, {candidate.Name} b) => ((IComparable<{candidate.Name}>)a).CompareTo(b) > 0;\n")
                 .Append(
-                    $"\tpublic static bool operator>=({candidate.Name} a, {candidate.Name} b) => a.CompareTo(b) >= 0;\n");
+                    $"\tpublic static bool operator>=({candidate.Name} a, {candidate.Name} b) => ((IComparable<{candidate.Name}>)a).CompareTo(b) >= 0;\n");
         }
 
         b.Append("}\n");
