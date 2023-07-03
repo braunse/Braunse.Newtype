@@ -73,7 +73,7 @@ public static class SourceGenerator
             if (candidate.Kind != DeclKind.Record)
             {
                 b.Append(
-                    $"\tpublic override bool Equals(object? other) => other is {candidate.Name} o && ((IEquatable<{candidate.Name})this).Equals(o);\n");
+                    $"\tpublic override bool Equals(object? other) => other is {candidate.Name} o && ((IEquatable<{candidate.Name}>)this).Equals(o);\n");
             }
 
             b.Append($"\tpublic static bool operator ==({candidate.Name} a, {candidate.Name} b) => a.Equals(b);\n")
